@@ -29,4 +29,5 @@ fi
 
 chown -R www-data:www-data /var/www/html
 
+mkdir -p /run/php
 exec php-fpm7.4 -F
