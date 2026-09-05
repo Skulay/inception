@@ -3,9 +3,15 @@ set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)
 
+mkdir -p /run/php
+
 cd /var/www/html
 
 if [ ! -f wp-config.php ]; then
+    until (echo > /dev/tcp/mariadb/3306) 2>/dev/null; do
+        sleep 1
+    done
+
     wp config create \
         --dbname=${MYSQL_DATABASE} \
         --dbuser=${MYSQL_USER} \

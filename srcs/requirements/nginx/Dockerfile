@@ -1,7 +1,11 @@
 FROM debian:bullseye
 
-RUN apt-get update && apt-get install -y \
-    nginx \
+RUN sed -i \
+    -e 's|^deb http://deb\.debian\.org|# deb http://deb.debian.org|' \
+    -e 's|^# deb http://snapshot\.debian\.org|deb [check-valid-until=no] http://snapshot.debian.org|' \
+    /etc/apt/sources.list && \
+    apt-get update && apt-get install -y --no-install-recommends \
+    nginx-light \
     openssl \
     && rm -rf /var/lib/apt/lists/*
 
