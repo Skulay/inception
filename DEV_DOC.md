@@ -7,6 +7,8 @@
 - The `secrets/` folder created at the root with:
   - `db_password.txt`
   - `db_root_password.txt`
+  - `wp_admin_password.txt`
+  - `wp_editor_password.txt`
 
 ## Environment setup
 

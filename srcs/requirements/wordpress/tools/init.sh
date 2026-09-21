@@ -2,6 +2,8 @@
 set -e
 
 DB_PASSWORD=$(cat /run/secrets/db_password)
+WP_ADMIN_PASSWORD=$(cat /run/secrets/wp_admin_password)
+WP_EDITOR_PASSWORD=$(cat /run/secrets/wp_editor_password)
 
 mkdir -p /run/php
 
@@ -23,13 +25,13 @@ if [ ! -f wp-config.php ]; then
         --url=${DOMAIN_NAME} \
         --title="Inception" \
         --admin_user=boss \
-        --admin_password=adminpass123 \
+        --admin_password=${WP_ADMIN_PASSWORD} \
         --admin_email=${WP_ADMIN_EMAIL} \
         --allow-root
 
     wp user create editeur editeur@${DOMAIN_NAME} \
         --role=editor \
-        --user_pass=editpass123 \
+        --user_pass=${WP_EDITOR_PASSWORD} \
         --allow-root
 fi
 
