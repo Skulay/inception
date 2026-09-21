@@ -27,9 +27,10 @@ Make sure `alehamad.42.fr` is mapped to your VM's IP in your host's
 
 ## Credentials
 
-Credentials are stored in `secrets/credentials.txt` (not committed to git).
-Database passwords are stored separately in `secrets/db_password.txt` and
-`secrets/db_root_password.txt`.
+Usernames are listed in `secrets/credentials.txt` (not committed to git).
+Passwords are stored one-per-file in `secrets/db_password.txt`,
+`secrets/db_root_password.txt`, `secrets/wp_admin_password.txt` and
+`secrets/wp_editor_password.txt`, each mounted as a Docker secret.
 
 ## Check that services are running
 
