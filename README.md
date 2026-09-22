@@ -48,8 +48,6 @@ required by the subject.
 - MariaDB documentation: https://mariadb.com/kb/en/documentation/
 - NGINX documentation: https://nginx.org/en/docs/
 
-AI (Claude) was used to help debug SSH access to the VM through VirtualBox/WSL,
-to review and fix syntax errors in the Dockerfiles, nginx.conf and
-docker-compose.yml, and to help structure the mandatory part according to the
-subject's requirements. All generated code was reviewed, tested, and adjusted
+AI (Claude) was used to help review and fix syntax errors in the Dockerfiles, nginx.conf and
+docker-compose.yml. All generated code was reviewed, tested, and adjusted
 manually before being used.
