@@ -32,6 +32,24 @@ Passwords are stored one-per-file in `secrets/db_password.txt`,
 `secrets/db_root_password.txt`, `secrets/wp_admin_password.txt` and
 `secrets/wp_editor_password.txt`, each mounted as a Docker secret.
 
+To change a credential, edit the corresponding file in `secrets/` and
+recreate the containers so the new value is picked up:
+
+```bash
+make down
+make up
+```
+
+Note that WordPress admin/editor accounts and the database user are only
+(re)created on the very first startup of each container (when their volume
+is empty). To force a full reset with the new credentials, wipe the
+persisted data first:
+
+```bash
+make fclean
+make up
+```
+
 ## Check that services are running
 
 ```bash

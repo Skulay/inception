@@ -36,10 +36,19 @@ containers on the `inception` network.
 ## Managing containers and volumes
 
 ```bash
-docker compose -f srcs/docker-compose.yml ps        # list running services
-docker compose -f srcs/docker-compose.yml logs -f    # follow logs
-docker volume ls                                     # list named volumes
-docker exec -it mariadb bash                          # shell into a container
+docker compose -f srcs/docker-compose.yml ps          # list running services
+docker compose -f srcs/docker-compose.yml logs -f     # follow logs
+docker compose -f srcs/docker-compose.yml down        # stop and remove containers
+docker volume ls                                      # list named volumes
+docker volume inspect srcs_mariadb_data                # check the volume's host path
+docker exec -it mariadb bash                           # shell into a container
+```
+
+To connect to the database directly:
+
+```bash
+docker exec -it mariadb mysql -u wpuser -p wordpress
+# password: content of secrets/db_password.txt
 ```
 
 ## Data persistence
