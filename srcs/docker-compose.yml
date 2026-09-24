@@ -71,3 +71,5 @@ secrets:
     file: ../secrets/wp_admin_password.txt
   wp_editor_password:
     file: ../secrets/wp_editor_password.txt
+
+# Fichier qui sert de sommaire en quelque sorte, qui va lancer tout les processus et declare les connection et le reseau inception

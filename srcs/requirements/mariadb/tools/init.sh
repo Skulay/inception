@@ -14,7 +14,8 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     until mysqladmin --socket=/run/mysqld/mysqld.sock ping 2>/dev/null; do
         sleep 1
     done
-
+# attend une reponse
+# suivi de la creation de database + creation d'admin et user + donne les droit 
     mysql --socket=/run/mysqld/mysqld.sock -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
     mysql --socket=/run/mysqld/mysqld.sock -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
     mysql --socket=/run/mysqld/mysqld.sock -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%';"
@@ -23,5 +24,6 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 
     mysqladmin --socket=/run/mysqld/mysqld.sock -u root -p"${DB_ROOT_PASSWORD}" shutdown
 fi
+#shutdown vu que c'est temporaire on lance apres le vrai serveur
 
 exec mysqld_safe

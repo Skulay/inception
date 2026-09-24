@@ -13,6 +13,8 @@ if [ ! -f wp-config.php ]; then
     until (echo > /dev/tcp/mariadb/3306) 2>/dev/null; do
         sleep 1
     done
+#tente d'ouvrir une connexion tcp
+#puis instalation dans la base de donner
 
     wp config create \
         --dbname=${MYSQL_DATABASE} \

@@ -12,8 +12,14 @@ RUN mkdir -p /etc/nginx/ssl && \
     -out /etc/nginx/ssl/inception.crt \
     -subj "/C=FR/ST=IDF/L=Paris/O=42/CN=alehamad.42.fr"
 
+# -x509 : certificat auto-signé
+# -nodes : la clé privée n'est pas chiffrée par un mdp
+# -subj : remplit les champs du certificat, CN = nom de domaine
+
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+#remplace la config par la mienne
 
 EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
+#lance nginx en foreground (PID 1)
