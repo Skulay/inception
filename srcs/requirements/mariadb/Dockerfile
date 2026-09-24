@@ -1,10 +1,6 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN sed -i \
-    -e 's|^deb http://deb\.debian\.org|# deb http://deb.debian.org|' \
-    -e 's|^# deb http://snapshot\.debian\.org|deb [check-valid-until=no] http://snapshot.debian.org|' \
-    /etc/apt/sources.list && \
-    apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     mariadb-server \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /var/lib/mysql/*

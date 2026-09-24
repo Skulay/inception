@@ -1,12 +1,8 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN sed -i \
-    -e 's|^deb http://deb\.debian\.org|# deb http://deb.debian.org|' \
-    -e 's|^# deb http://snapshot\.debian\.org|deb [check-valid-until=no] http://snapshot.debian.org|' \
-    /etc/apt/sources.list && \
-    apt-get update && apt-get install -y \
-    php7.4-fpm \
-    php7.4-mysql \
+RUN apt-get update && apt-get install -y \
+    php-fpm \
+    php-mysql \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
@@ -19,7 +15,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     chmod +x wp-cli.phar && \
     mv wp-cli.phar /usr/local/bin/wp
 
-COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 COPY tools/init.sh /init.sh
 
 RUN chmod +x /init.sh
