@@ -32,9 +32,10 @@ if [ ! -f wp-config.php ]; then
         --allow-root
 
     wp user create editeur editeur@${DOMAIN_NAME} \
-        --role=editor \
+        --role=author \
         --user_pass=${WP_EDITOR_PASSWORD} \
         --allow-root
+
 fi
 
 chown -R www-data:www-data /var/www/html
